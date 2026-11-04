@@ -1,0 +1,36 @@
+#!/bin/bash -l
+
+################################################################################
+#Script Name: 
+#Description: 
+#Args       : None 
+#Author     : Georgia Doing
+#Email      : georgia.doing@duke.edu
+################################################################################
+
+##SBATCH --partition=standard
+###SBATCH --partition=bigmem
+#SBATCH --job-name=seqa
+#SBATCH --time=0-08:00:00
+##SBATCH --nodes=1
+##SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=32
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=georgia.doing@duke.edu
+#SBATCH --array=105-201%20
+#SBATCH -o /work/gd134/oe/%u-%x-%A-%a
+#SBATCH --mem=128G
+###SBATCH --hostlist=[k01-58]
+
+#
+#
+
+
+
+
+cd $SLURM_SUBMIT_DIR
+
+conda activate tfkg
+
+python train_model_ecmg_mgs_dcc.py ${SLURM_ARRAY_TASK_ID}
+

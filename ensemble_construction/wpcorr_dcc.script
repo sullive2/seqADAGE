@@ -14,7 +14,7 @@
 #SBATCH --time=0-08:00:00
 ##SBATCH --nodes=1
 ##SBATCH --ntasks-per-node=16
-#SBATCH -cpus-per-task=16
+#SBATCH --cpus-per-task=16
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=georgia.doing@duke.edu
 ##SBATCH --array=10001-15000%20
@@ -32,5 +32,6 @@ cd $SLURM_SUBMIT_DIR
 
 conda activate radage
 
-python weighted_pearson_correlation_parallel_edit_dcc.py /work/gd134/adage_models /work/gd134/wcor_ec_mgp_450.csv 571,670 8 6390
+#python weighted_pearson_correlation_parallel_edit_dcc.py /work/gd134/adage_models /work/gd134/wcor_ec_mgp_450.csv 571,670 8 6390
+python weighted_pearson_correlation_parallel_edit_dcc.py /work/gd134/adage_models /work/gd134/wcor_ec_mg_mgsp_450.csv 672,771 8 4272
 
